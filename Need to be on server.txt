@@ -1,0 +1,1 @@
+Place whole APOLLON folder on your server (wamp, ...)

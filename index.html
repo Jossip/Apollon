@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Apollon - Style For You</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:700,300,400">        
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/form-elements.css">
+    <link rel="stylesheet" href="assets/elegant-font/code/style.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/portfolio.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<!--favicon-->
+	<link rel="shortcut icon" type="jpg/png" href="assets/img/favicon.png">
+</head>
+<body>
+<!--- navbar -->
+	<nav id="navbar" class="navbar navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" width="180" height="70"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="top-navbar-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="scroll-link" href="#top-content">Vrh</a></li>
+					<li><a class="scroll-link" href="#portfolio">Portfolio</a></li>
+					<li><a class="scroll-link" href="#pricing">Cijene</a></li>
+					<li><a class="scroll-link" href="#location">Lokacija</a></li>
+					<li><a class="scroll-link" href="#contact">Kontakt</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<!--header-->
+<div class="page-title top-content" style="background-image: url(assets/img/header.jpg);">
+    <div class="page-title-text wow fadeInUp">
+        <h1>APOLLON</h1>
+        <h4>Muški frizerski salon</h4>
+    </div>
+</div>
+<!--- portfolio -->
+<div class="portfolio-container">
+<h1>WORKS</h1>
+<div class="divider-1"><span></span></div>
+<p class="big">Here are some of my works!</p>
+    <div class="container">
+    	<div class="row">
+	       <?php 
+	       	//scan "uploads" folder and display them accordingly
+	       $folder = "uploads";
+	       $results = scandir('uploads');
+	       foreach ($results as $result) {
+	       	if ($result === '.' or $result === '..') continue;
+	       
+	       	if (is_file($folder . '/' . $result)) {
+	       		echo '
+	       		<div class="col-md-3">
+		       		<div class="thumbnail">
+			       		<img src="'.$folder . '/' . $result.'" alt="...">
+				       		<div class="caption">
+				       		<p><a href="remove.php?name='.$result.'" class="btn btn-danger btn-xs" role="button">Remove</a></p>
+			       		</div>
+		       		</div>
+	       		</div>';
+	       	}
+	       }
+	       ?>
+    	</div>
+<!--- CIJENE -->
+	<div class="pricing-container section-container">
+	        <div class="container">
+	            <div>
+	                <div class="pricing-2-box section-description wow fadeInDown">
+	                	<h1>Cijene</h1>
+	                </div>
+	            </div>
+	            <div class="pricing-box-container">
+	            	<div class="col-sm-3 pricing-2-box wow fadeInRight">
+	                    <div class="pricing-2-table">
+	                    	<h3>Muško šišanje</h3>
+	                    	<div class="pricing-2-table-price"><span>35kn</span></div>
+							<div class="pricing-2-table-button">
+								<a class="big-link-1 btn scroll-link" href="#contact">Naruči se</a>
+							</div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-3 pricing-2-box wow fadeInRight">
+	                    <div class="pricing-2-table">
+	                    	<h3>Dječje <br>šišanje</h3>
+	                    	<div class="pricing-2-table-price"><span>30kn</span></div>
+							<div class="pricing-2-table-button">
+								<a class="big-link-1 btn scroll-link" href="#contact">Naruči se</a>
+							</div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-3 pricing-2-box wow fadeInUp">
+	                	<div class="pricing-2-table">
+	                    	<h3>Brijanje brade</h3>
+	                    	<div class="pricing-2-table-price"><span>20kn</span></div>
+							<div class="pricing-2-table-button">
+								<a class="big-link-1 btn scroll-link" href="#contact">Naruči se</a>
+							</div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-3 pricing-2-box wow fadeInRight">
+	                    <div class="pricing-2-table">
+	                    	<h3>Brijanje glave</h3>
+	                    	<div class="pricing-2-table-price"><span>20kn</span></div>
+							<div class="pricing-2-table-button">
+								<a class="big-link-1 btn scroll-link" href="#contact">Naruči se</a>
+							</div>
+	                    </div>
+	                </div>	 
+	            </div>
+	        </div>
+        </div>
+<!-- maps -->
+<div id="map" style="width:100%;height:400px;background:#967666" class="location-container"></div>
+<script>
+      function initMap() {
+        var uluru = {lat: 45.376708, lng: 18.954101};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru,
+          scrollwheel: false
+
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs_WsWuihjrzDKmjv8f-ijUex84kKrqjk&callback=initMap">
+    </script>
+    	</div>
+<!--- KONTAKT -->
+	<div class="col-sm-12 contact-container">
+	<h1 class="wow fadeInDown">Kontakt</h1>
+		<div class="col-sm-12">
+			<form action="index_submit" method="get" accept-charset="utf-8">
+				<input class="wow fadeInRight" type="text" name="name" placeholder="Ime"><br><br>
+				<input class="wow fadeInLeft" type="text" name="name" placeholder="Prezime"><br><br>
+				<input class="wow fadeInRight" type="text" name="name" placeholder="Broj mobitela"><br><br>
+				<input class="wow fadeInLeft" type="checkbox" name="name"> <h4>Šišanje</h4>
+				<input class="wow fadeInRight" type="checkbox" name="name"> <h4>Diječje Šišanje</h4>
+				<input class="wow fadeInLeft" type="checkbox" name="name"> <h4>Brijanje brade</h4>
+				<input class="wow fadeInRight" type="checkbox" name="name"> <h4>Brijanje glave</h4>
+				<button type="submit" class="btn wow fadeInUp">Naruči se</button>
+			</form>
+		</div>
+	</div>
+<!-- BEGIN FOOTER -->
+<footer id="footer">
+  	<div class="container">
+    	<div>
+      		<div class="col-lg-6 col-md-6 col-sm-6">
+        		<div class="footer_left">
+					<p>&copy; 2017. Apollon - All Rights Reserved.</p>
+			   	</div>
+      		</div>
+      		<div class="col-lg-6 col-md-6 col-sm-6">
+        		<div class="footer_right">
+          			<ul class="social_nav">
+            			<li><a href="#"><i class="social_facebook"></i></a></li>
+            			<li><a href="https://plus.google.com/109290641741002560320"><i class="social_googleplus"></i></a></li>
+          			</ul>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+</footer>
+        <!-- JS -->
+        <script src="assets/js/jquery-library.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+</body>
+</html>
